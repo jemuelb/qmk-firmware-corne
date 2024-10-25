@@ -2,6 +2,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "oled.h"
 
+enum layers {
+    _QWERTY,
+    _LOWER,
+    _RAISE,
+    _ADJUST
+};
+
 void render_layer_state(void) {
     switch (get_highest_layer(layer_state)) {
         case 0:
@@ -16,5 +23,27 @@ void render_layer_state(void) {
         case 3:
             oled_write_raw_P(layer3_img, sizeof(layer3_img));
             break;
+    }
+}
+
+void another_layer_state(void) {
+    oled_set_cursor(0, 1);
+
+    switch (get_highest_layer(layer_state)) {
+        case _QWERTY:
+            oled_write_ln_P("MAIN", false);
+            break;
+        case _LOWER:
+            oled_write_ln_P("LOWER", false);
+            break;
+        case _RAISE:
+            oled_write_ln_P("UPPER", false);
+            break;
+        case _ADJUST:
+            oled_write_ln_P("ADJUST", false);
+            break;
+        default:
+            // Or use the write_ln shortcut over adding '\n' to the end of your string
+            oled_write_ln_P(PSTR("Undefined"), false);
     }
 }

@@ -16,9 +16,13 @@ bool oled_task_kb(void) {
         return false;
     }
     if (is_keyboard_master()) {
-        render_layer_state();
+        another_layer_state();
     } else {
-        oled_write_raw_P(bs_logo_img, sizeof(bs_logo_img));
+        // Set cursor position
+        oled_set_cursor(0, 1);
+
+        // Write text to OLED
+        oled_write("Hello World!", false);
     }
     return false;
 }

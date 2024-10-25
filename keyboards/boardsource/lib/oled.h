@@ -4,6 +4,7 @@
 #include "quantum.h"
 
 void render_layer_state(void);
+void another_layer_state(void);
 
 // clang-format off
 static const char PROGMEM layer0_img[] = {
