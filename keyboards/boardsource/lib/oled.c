@@ -31,16 +31,28 @@ void another_layer_state(void) {
 
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
-            oled_write_ln_P("MAIN", false);
+            oled_write_P("MAIN \n", true);
+            oled_write_P("LOWER\n", false);
+            oled_write_P("UPPER\n", false);
+            oled_write_P("ADJST\n", false);
             break;
         case _LOWER:
-            oled_write_ln_P("LOWER", false);
+            oled_write_P("MAIN \n", false);
+            oled_write_P("LOWER\n", true);
+            oled_write_P("UPPER\n", false);
+            oled_write_P("ADJST\n", false);
             break;
         case _RAISE:
-            oled_write_ln_P("UPPER", false);
+            oled_write_P("MAIN \n", false);
+            oled_write_P("LOWER\n", false);
+            oled_write_P("UPPER\n", true);
+            oled_write_P("ADJST\n", false);
             break;
         case _ADJUST:
-            oled_write_ln_P("ADJUST", false);
+            oled_write_P("MAIN \n", false);
+            oled_write_P("LOWER\n", false);
+            oled_write_P("UPPER\n", false);
+            oled_write_P("ADJST\n", true);
             break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
