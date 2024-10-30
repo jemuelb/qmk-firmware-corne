@@ -35,27 +35,45 @@ void another_layer_state(void) {
             oled_write_P("LOWER\n", false);
             oled_write_P("UPPER\n", false);
             oled_write_P("ADJST\n", false);
+			oled_write_P("MODS \n", false);
             break;
         case _LOWER:
             oled_write_P("MAIN \n", false);
             oled_write_P("LOWER\n", true);
             oled_write_P("UPPER\n", false);
             oled_write_P("ADJST\n", false);
+			oled_write_P("MODS \n", false);
             break;
         case _RAISE:
             oled_write_P("MAIN \n", false);
             oled_write_P("LOWER\n", false);
             oled_write_P("UPPER\n", true);
             oled_write_P("ADJST\n", false);
+			oled_write_P("MODS \n", false);
             break;
         case _ADJUST:
             oled_write_P("MAIN \n", false);
             oled_write_P("LOWER\n", false);
             oled_write_P("UPPER\n", false);
             oled_write_P("ADJST\n", true);
+			oled_write_P("MODS \n", false);
             break;
+		case _ADJUST:
+            oled_write_P("MAIN \n", false);
+            oled_write_P("LOWER\n", false);
+            oled_write_P("UPPER\n", false);
+            oled_write_P("ADJST\n", false);
+			oled_write_P("MODS \n", true);
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
             oled_write_ln_P(PSTR("Undefined"), false);
     }
+}
+
+void caps_indicator(void) {
+    oled_set_cursor(0, 1);
+
+	// Caps lock status
+    led_t led_state = host_keyboard_led_state();
+    oled_write_P(led_state.caps_lock ? PSTR("Caps Lock On") : PSTR("Caps Lock Off"), false);
 }
