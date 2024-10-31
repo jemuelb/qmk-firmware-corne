@@ -6,8 +6,8 @@ enum layers {
     _QWERTY,
     _LOWER,
     _RAISE,
-    _ADJUST,
-	_MODS
+	_IIDX,
+    _SDVX
 };
 
 void render_layer_state(void) {
@@ -35,36 +35,36 @@ void another_layer_state(void) {
             oled_write_P("MAIN \n", true);
             oled_write_P("LOWER\n", false);
             oled_write_P("UPPER\n", false);
-            oled_write_P("ADJST\n", false);
-			oled_write_P("MODS \n", false);
+            oled_write_P("IIDX \n", false);
+			oled_write_P("SDVX \n", false);
             break;
         case _LOWER:
             oled_write_P("MAIN \n", false);
             oled_write_P("LOWER\n", true);
             oled_write_P("UPPER\n", false);
-            oled_write_P("ADJST\n", false);
-			oled_write_P("MODS \n", false);
+            oled_write_P("IIDX \n", false);
+			oled_write_P("SDVX \n", false);
             break;
         case _RAISE:
             oled_write_P("MAIN \n", false);
             oled_write_P("LOWER\n", false);
             oled_write_P("UPPER\n", true);
-            oled_write_P("ADJST\n", false);
-			oled_write_P("MODS \n", false);
+            oled_write_P("IIDX \n", false);
+			oled_write_P("SDVX \n", false);
             break;
-        case _ADJUST:
+        case _IIDX:
             oled_write_P("MAIN \n", false);
             oled_write_P("LOWER\n", false);
             oled_write_P("UPPER\n", false);
-            oled_write_P("ADJST\n", true);
-			oled_write_P("MODS \n", false);
+            oled_write_P("IIDX \n", true);
+			oled_write_P("SDVX \n", false);
             break;
-		case _MODS:
+		case _SDVX:
             oled_write_P("MAIN \n", false);
             oled_write_P("LOWER\n", false);
             oled_write_P("UPPER\n", false);
-            oled_write_P("ADJST\n", false);
-			oled_write_P("MODS \n", true);
+            oled_write_P("IIDX \n", false);
+			oled_write_P("SDVX \n", true);
 			break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
